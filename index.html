@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 flex items-center justify-center h-screen text-white">
+    <div class="bg-gray-800 p-8 rounded-lg shadow-lg w-96">
+        <h2 class="text-2xl font-bold mb-6 text-center">Iniciar Sesión</h2>
+        <input id="userL" class="w-full p-2 mb-4 bg-gray-700 rounded" placeholder="Usuario">
+        <input id="passL" type="password" class="w-full p-2 mb-4 bg-gray-700 rounded" placeholder="Contraseña">
+        <button id="btnLogin" class="w-full bg-green-600 p-2 rounded hover:bg-green-700 mb-4">Entrar</button>
+        
+        <!-- ESTA ES LA LÍNEA QUE FALTABA -->
+        <p class="text-center text-sm">¿No tienes cuenta? <a href="registro.html" class="text-blue-400 hover:underline">Regístrate aquí</a></p>
+    </div>
+
+    <script>
+        document.getElementById('btnLogin').onclick = () => {
+            const userGuardado = localStorage.getItem('user');
+            const passGuardado = localStorage.getItem('pass');
+            
+            if(document.getElementById('userL').value === userGuardado && 
+               document.getElementById('passL').value === passGuardado) {
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Credenciales incorrectas. ¿Ya te registraste?');
+            }
+        };
+    </script>
+</body>
+</html>
