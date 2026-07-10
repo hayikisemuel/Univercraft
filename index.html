@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // MEJORA DE SEGURIDAD: Si ya hay una sesión, no pedir login de nuevo
+        // SEGURIDAD: Redirección automática si ya hay una sesión activa
         if (localStorage.getItem('user')) {
             window.location.href = 'dashboard.html';
         }
@@ -25,7 +25,7 @@
             const userGuardado = localStorage.getItem('user');
             const passGuardado = localStorage.getItem('pass');
             
-            // Verificación con validación extra de que existe un usuario guardado
+            // Validación de credenciales
             if(userGuardado && document.getElementById('userL').value === userGuardado && 
                document.getElementById('passL').value === passGuardado) {
                 window.location.href = 'dashboard.html';
