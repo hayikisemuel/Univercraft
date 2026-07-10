@@ -3,12 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // SEGURIDAD: Si no hay usuario logueado, redirigir al Login (index.html)
-        if (!localStorage.getItem('user')) {
-            window.location.href = 'index.html';
-        }
-    </script>
     <style>
         .dark { background-color: #111827 !important; color: white !important; }
         .dark .bg-white { background-color: #1f2937 !important; color: white !important; }
@@ -27,19 +21,37 @@
         </button>
 
         <h2 class="text-2xl font-semibold text-gray-700 mb-4">Lista de Mods</h2>
-        <button id="btnLogout" class="flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse mb-8">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="p-3 border">Mod</th>
+                        <th class="p-3 border">Enlace al Tutorial / Página Oficial</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm">
+                    <tr><td class="p-3 border font-semibold">Alex's Mobs</td><td class="p-3 border"><a href="https://alexs-mobs.fandom.com/wiki/Alex%27s_Mobs_Wiki" target="_blank" class="text-blue-400 hover:underline">Alex's Mobs Wiki</a></td></tr>
+                    <tr><td class="p-3 border font-semibold">Better Village</td><td class="p-3 border"><a href="https://modrinth.com/mod/better-village/versions" target="_blank" class="text-blue-400 hover:underline">Better Village CurseForge</a></td></tr>
+                    <tr><td class="p-3 border font-semibold">Bosses Unleashed</td><td class="p-3 border"><a href="https://www.curseforge.com/minecraft/mc-mods/bosses-unleashed" target="_blank" class="text-blue-400 hover:underline">Bosses Unleashed CurseForge</a></td></tr>
+                    <tr><td class="p-3 border font-semibold">Bosses' Rise</td><td class="p-3 border"><a href="https://modrinth.com/mod/bossesrise" target="_blank" class="text-blue-400 hover:underline">Bosses' Rise CurseForge</a></td></tr>
+                    <tr><td class="p-3 border font-semibold">L_Ender's Cataclysm</td><td class="p-3 border"><a href="https://modrinth.com/mod/l_enders-cataclysm" target="_blank" class="text-blue-400 hover:underline">Cataclysm CurseForge</a></td></tr>
+                    <tr><td class="p-3 border font-semibold">Etched</td><td class="p-3 border"><a href="https://www.curseforge.com/minecraft/mc-mods/etched" target="_blank" class="text-blue-400 hover:underline">Etched CurseForge</a></td></tr>
+                    <tr><td class="p-3 border font-semibold">Legendary Monsters</td><td class="p-3 border"><a href="https://www.curseforge.com/minecraft/mc-mods/legendary-monsters" target="_blank" class="text-blue-400 hover:underline">Legendary Monsters CurseForge</a></td></tr>
+                    <tr><td class="p-3 border font-semibold">Lootr</td><td class="p-3 border"><a href="https://www.curseforge.com/minecraft/mc-mods/lootr" target="_blank" class="text-blue-400 hover:underline">Lootr CurseForge</a></td></tr>
+                    <tr><td class="p-3 border font-semibold">MrCrayfish's Furniture</td><td class="p-3 border"><a href="https://www.curseforge.com/minecraft/mc-mods/mrcrayfish-furniture-mod" target="_blank" class="text-blue-400 hover:underline">MrCrayfish Furniture Wiki</a></td></tr>
+                    <tr><td class="p-3 border font-semibold">Tinkers Construct</td><td class="p-3 border"><a href="https://www.curseforge.com/minecraft/mc-mods/tinkers-construct" target="_blank" class="text-blue-400 hover:underline">Tinkers Construct Wiki</a></td></tr>
+                    <tr><td class="p-3 border font-semibold">Ad Astra</td><td class="p-3 border"><a href="https://www.curseforge.com/minecraft/mc-mods/ad-astra" target="_blank" class="text-blue-400 hover:underline">Ad Astra Wiki</a></td></tr>
+                    <tr><td class="p-3 border font-semibold">MCA Reborn</td><td class="p-3 border"><a href="https://www.curseforge.com/minecraft/mc-mods/minecraft-comes-alive-reborn" target="_blank" class="text-blue-400 hover:underline">MCA Reborn Wiki</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button onclick="window.location.href='login.html'" class="flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all">
             <span>Cerrar Sesión</span>
         </button>
     </div>
 
     <script>
-        // Lógica de Logout: limpia sesión y regresa al inicio (index.html)
-        document.getElementById('btnLogout').onclick = () => {
-            localStorage.clear();
-            window.location.href = 'index.html';
-        };
-
-        // Lógica de Modo Oscuro
         const btn = document.getElementById('toggleMode');
         const body = document.getElementById('mainBody');
         const panel = document.getElementById('mainPanel');
