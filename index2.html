@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Si ya hay sesión, redirigir al panel
-        if (localStorage.getItem('user')) {
-            window.location.href = 'dashboard.html';
-        }
-    </script>
 </head>
 <body class="bg-gray-900 flex items-center justify-center h-screen text-white">
     <div class="bg-gray-800 p-8 rounded-lg shadow-lg w-96">
@@ -16,24 +9,15 @@
         <input id="user" class="w-full p-2 mb-4 bg-gray-700 rounded" placeholder="Usuario">
         <input id="pass" type="password" class="w-full p-2 mb-4 bg-gray-700 rounded" placeholder="Contraseña">
         <button id="btnRegistro" class="w-full bg-blue-600 p-2 rounded hover:bg-blue-700">Registrarse</button>
-        
-        <p class="mt-4 text-center text-sm">¿Ya tienes cuenta? <a href="index.html" class="text-blue-400 hover:underline">Inicia sesión</a></p>
+        <p class="mt-4 text-center text-sm">¿Ya tienes cuenta? <a href="index.html" class="text-blue-400">Inicia sesión</a></p>
     </div>
 
     <script>
         document.getElementById('btnRegistro').onclick = () => {
-            const user = document.getElementById('user').value;
-            const pass = document.getElementById('pass').value;
-
-            if (user && pass) {
-                localStorage.setItem('user', user);
-                localStorage.setItem('pass', pass);
-                alert('¡Usuario registrado con éxito!');
-                // Redirigir al inicio (index.html)
-                window.location.href = 'index.html';
-            } else {
-                alert('Por favor, completa todos los campos.');
-            }
+            localStorage.setItem('user', document.getElementById('user').value);
+            localStorage.setItem('pass', document.getElementById('pass').value);
+            alert('¡Usuario registrado!');
+            window.location.href = 'index.html';
         };
     </script>
 </body>
