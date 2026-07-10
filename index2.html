@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // SEGURIDAD: Si ya hay una sesión, no dejar registrarse de nuevo, enviar al dashboard
+        // Si ya hay sesión, redirigir al panel
         if (localStorage.getItem('user')) {
             window.location.href = 'dashboard.html';
         }
@@ -29,7 +29,7 @@
                 localStorage.setItem('user', user);
                 localStorage.setItem('pass', pass);
                 alert('¡Usuario registrado con éxito!');
-                // Redirección corregida a index.html
+                // Redirigir al inicio (index.html)
                 window.location.href = 'index.html';
             } else {
                 alert('Por favor, completa todos los campos.');
